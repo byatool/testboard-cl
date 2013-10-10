@@ -1,8 +1,7 @@
 
-.formatTextAreaDisplyFormattedText {
-    background-color: #FFFFFF
+.datePickerPopup {
+    visibility: hidden;
 }
-
 .clearBoth {
   clear: both; }
 
@@ -37,6 +36,7 @@
     font-size: x-large !important; }
   .buttonListContainer .selectedButton {
     border-color: black !important; }
+  
   
   
 .formClass {
@@ -252,14 +252,13 @@ td.goog-date-picker-selected {
     width: 4em; }
   .gridBuilderContainer .gridBuilderButtonRowClass .disabled {
     background-color: #444444; }
-  
+
 .zippyContainer {
   margin: 1.4em 0 0 0; }
   .zippyContainer .goog-zippy-expanded {
     background-image: url("../../image/up.png"); }
   .zippyContainer .goog-zippy-collapsed {
-      background-image: url("../../image/down.png"); }
-  
+    background-image: url("../../image/down.png"); }
   
 body {
   background-color: #545454; }
@@ -314,4 +313,3 @@ body {
         background-color: #984545;
         color: white;
         float: right; }
-      

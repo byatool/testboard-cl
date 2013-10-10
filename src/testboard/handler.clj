@@ -11,6 +11,7 @@
 (defroutes app-routes
   (GET "/" [] (index-page))
   (GET "/formattext" [] (format-text-page))
+  (GET "/popupdatepicker" [] (popup-date-picker-page))
   (POST "/postit" []
         (generate-string {:test {:name "ad"}}))
   (route/resources "/")

@@ -15,12 +15,31 @@
 (defn index-page []
   (master-page [:div
                 [:h1 "Welcome"]
-                [:a {:href "/formattext"} "format text"]]))
+                [:a {:href "/formattext"} "format text"]
+                [:a {:href "/popupdatepicker"} "popup date picker"]]))
 
 (defn format-text-page []
   (master-page [:div
                 [:div {:id "mainContainer"}]
                 [:script "var holder = document.getElementById('mainContainer'); var datePicker = src.base.control.formatTextAreaDisplay.initialize(document, src.base.control.formatTextAreaDisplay.javascript.format); holder.appendChild(datePicker);"]]))
+
+
+(defn popup-date-picker-page []
+  (master-page [:div {:id "mainContainer"}
+                [:div
+                 [:input {:type "text" :id "targetTextbox" :class "floatLeft"}]
+                 [:div {:id "datePickerHolder" :class "floatLeft"}]
+                 [:div {:class "clearBoth"}]
+                 [:script
+                  "var DatePicker = src.base.control.popupDatePicker; "
+                  "var textboxName = 'targetTextbox'; "
+                  "var holderName = 'datePickerHolder'; "
+                  "var datePickerOptions = {};"
+                  "datePickerOptions[DatePicker.constant.ButtonText] = 'Date';"
+                  "datePickerOptions[DatePicker.constant.TextboxName] = textboxName;"
+                  "var holder = document.getElementById(holderName);"
+                  "var datePicker = DatePicker.create(datePickerOptions);"
+                  "holder.appendChild(datePicker);"]]]))
 
 ;; (defn master-page [to-inject]
 ;;   (html5
