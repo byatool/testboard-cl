@@ -21,7 +21,11 @@
 (defn format-text-page []
   (master-page [:div
                 [:div {:id "mainContainer"}]
-                [:script "var holder = document.getElementById('mainContainer'); var datePicker = src.base.control.formatTextAreaDisplay.initialize(document, src.base.control.formatTextAreaDisplay.javascript.format); holder.appendChild(datePicker);"]]))
+                [:script
+                 "var FormatTextAreaDisplay_ = src.base.control.formatTextAreaDisplay; "
+                 "var holder = document.getElementById('mainContainer'); "
+                 "var formatText = FormatTextAreaDisplay_.initialize(document, FormatTextAreaDisplay_.html.format);"
+                 "holder.appendChild(formatText);"]]))
 
 
 (defn popup-date-picker-page []
