@@ -24,7 +24,7 @@
                 [:script
                  "var FormatTextAreaDisplay_ = src.base.control.formatTextAreaDisplay; "
                  "var holder = document.getElementById('mainContainer'); "
-                 "var formatText = FormatTextAreaDisplay_.initialize(document, FormatTextAreaDisplay_.html.format);"
+                 "var formatText = FormatTextAreaDisplay_.initialize(document);"
                  "holder.appendChild(formatText);"]]))
 
 
