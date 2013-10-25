@@ -12,6 +12,7 @@
   (GET "/" [] (index-page))
   (GET "/formattext" [] (format-text-page))
   (GET "/popupdatepicker" [] (popup-date-picker-page))
+  (GET "/editablediv" [] (editable-div-page))
   (POST "/postit" []
         (generate-string {:test {:name "ad"}}))
   (route/resources "/")

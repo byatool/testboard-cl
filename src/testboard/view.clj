@@ -15,8 +15,9 @@
 (defn index-page []
   (master-page [:div
                 [:h1 "Welcome"]
-                [:a {:href "/formattext"} "format text"]
-                [:a {:href "/popupdatepicker"} "popup date picker"]]))
+                [:a {:href "/formattext"} "format text "]
+                [:a {:href "/popupdatepicker"} "popup date picker "]
+                [:a {:href "/editablediv"} "editable div  "]]))
 
 (defn format-text-page []
   (master-page [:div
@@ -45,6 +46,16 @@
                   "var datePicker = DatePicker.create(datePickerOptions);"
                   "holder.appendChild(datePicker);"]]]))
 
+
+
+(defn editable-div-page []
+  (master-page [:div
+                [:div {:id "mainContainer"}]
+                [:script
+                 "var EditableDiv_ = src.base.control.editableDiv; "
+                 "var holder = document.getElementById('mainContainer'); "
+                 "var editableDiv = EditableDiv_.initialize('theEditableDiv', 'this is the text', '');"
+                 "holder.appendChild(editableDiv);"]]))
 ;; (defn master-page [to-inject]
 ;;   (html5
 ;;    [:head
