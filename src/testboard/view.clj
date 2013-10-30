@@ -16,9 +16,12 @@
 (defn index-page []
   (master-page [:div
                 [:h1 "Welcome"]
+                [:a {:href "/editablediv"} "editable div  "]
+                [:br]
                 [:a {:href "/formattext"} "format text "]
-                [:a {:href "/popupdatepicker"} "popup date picker "]
-                [:a {:href "/editablediv"} "editable div  "]]))
+                [:br]
+                [:a {:href "/popupdatepicker"} "popup date picker "]]))
+
 
 (defn format-text-page []
   (master-page [:div
@@ -48,7 +51,6 @@
                   "holder.appendChild(datePicker);"]]]))
 
 
-
 (defn editable-div-page []
   (master-page [:div
                 [:div {:id "mainContainer"}]
@@ -60,28 +62,5 @@
 
 
 (defn editable-div-page-result [text]
-  (generate-string {:MessageItems [{:Message "hi" :MessageType "error"}]}))
-;; (defn master-page [to-inject]
-;;   (html5
-;;    [:head
-;;     [:title "overall title"]
-;;     (include-js "/script/live.js")
-;;     (include-css "/css/final.css")]
-;;    [:body
-;;     to-inject]))
+  (generate-string {:MessageItems [{:Message text :MessageType "error"}]}))
 
-
-;; (defn index-page []
-;;   (master-page [:h1 "Welcome"]))
-
-
-;; (defn text-format-page
-;;   (master-page
-;;    [:div
-;;     [:div {:id "maincontainer"}]
-;;     [:script "var holder = document.getElementById('mainContainer');"]]))
-
-
-
-;;[:a {:href "/formattext"} "format text"]
-;;:div {:class ".buttonListContainer"}

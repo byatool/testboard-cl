@@ -1,0 +1,41 @@
+.theEditableDiv
+  background-color       : $greyOne
+  border-radius      : 5px
+  height                 : 10em
+  padding                : 1em 1em 1em 1em
+  width                  : 10em
+  .textContainer
+    background-color     : $greyFour
+    border-radius      : 5px
+    color                : $white
+    height               : 8em
+    padding              : 1em 1em 1em 1em
+    width                : 8em
+  .textUpdateForm
+    .editTextArea
+      border-radius      : 5px
+      height             : 10em
+      width              : 11em
+      
+    button
+      @include defaultButton
+      border-radius      : 5px
+      height             : 1.5em
+      margin             : 0 .2em 0 0
+      width              : 1.5em
+      &:hover
+        background-color : $blueFour !important
+        color            : $blueOne
+          
+    #textUpdateForm_messageBox
+      @include defaultBorder
+      margin             : 1em 0 0 0
+      div
+        padding: .3em .3em .3em .3em
+      .error
+        background-color : $errorRed
+        color            : $white
+      .info
+        background-color : $greenFive
+        color            : $white
+          

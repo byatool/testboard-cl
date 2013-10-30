@@ -17,8 +17,6 @@
   (GET "/editablediv" [] (editable-div-page))
   (|-| editabledivresult ?text
        (editable-div-page-result text))
-  (POST "/postit" []
-        (generate-string {:test {:name "ad"}}))
   (route/resources "/")
   (route/not-found "Not Found"))
 

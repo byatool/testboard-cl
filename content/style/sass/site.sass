@@ -1,0 +1,54 @@
+$almostWhite        : #dfdfdf
+$black              : #000000
+$darkGrey           : #444444
+$errorRed           : #984545
+$green              : #37b75b
+$lightGrey          : #c9c3bc
+$lightMetroBlue     : #cceef8
+$metroBlue          : #00a2ce
+$midGrey            : #565656
+$readOnlyBlue       : #009cc7
+$white              : #ffffff
+
+$blueOne            : #cceef8
+$blueTwo            : #66cde9
+$blueThree          : #00acda
+$blueFour           : #009ac4
+$blueFive           : #007898
+$greenOne           : #e8f4d9
+$greenTwo           : #bbdd8c
+$greenThree         : #8dc63f
+$greenFour          : #7fb239
+$greenFive          : #628a2c
+$greyOne            : #dfdfdf
+$greyTwo            : #9e9e9e
+$greyThree          : #5d5d5d
+$greyFour           : #545454
+$greyFive           : #414141
+
+
+$defaultBorderWidth : .1em
+
+@mixin defaultButton
+  background-color: $blueOne
+  border-color: $blueFour
+  border-style: solid
+  border-Width: .2em
+  color: $blueFour
+  font-size: 1em
+  padding: 0 .1em .1em .1em
+    
+@mixin defaultBorder
+  border-color      : $darkGrey
+  border-radius     : 5px
+  border-style      : solid
+  border-width      : $defaultBorderWidth
+    
+.clearBoth
+  clear: both
+
+.floatLeft 
+  float: left 
+
+.floatRight 
+  float: right

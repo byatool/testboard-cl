@@ -1,7 +1,3 @@
-
-.datePickerPopup {
-    visibility: hidden;
-}
 .clearBoth {
   clear: both; }
 
@@ -11,305 +7,49 @@
 .floatRight {
   float: right; }
 
-.ac-renderer {
-  font: normal 13px Arial, sans-serif;
-  position: absolute;
-  background: white;
-  border: 1px solid #666666;
-  width: 300px; }
-  .ac-renderer .ac-row {
-    cursor: pointer;
-    padding: 0.4em; }
-  .ac-renderer .ac-highlighted {
-    font-weight: bold; }
-  .ac-renderer .ac-active {
-    background-color: #b2b4bf; }
-  
-.buttonListContainer {
-  background-color: #cccccc; }
-  .buttonListContainer button {
-    background-color: #c1131d !important;
-    border-color: white !important;
-    border-style: solid !important;
-    border-Width: 0.5em !important;
-    color: white !important;
-    font-size: x-large !important; }
-  .buttonListContainer .selectedButton {
-    border-color: black !important; }
-  
-  
-  
-.formClass {
-  height: 10em; }
-  .formClass .submitButton {
-    background-color: #c1131d !important;
-    border-color: white !important;
-    border-style: solid !important;
-    border-Width: 0.5em !important;
-    color: white !important;
-    font-size: x-large !important; }
-  .formClass .inputContainerClass {
-    margin-bottom: 3px;
-    padding: 4px; }
-  .formClass label {
-    color: black;
-    display: block;
-    float: left;
-    margin-bottom: 4px;
-    text-align: right;
-    width: 13em; }
-  .formClass .label {
-    color: black;
-    display: block;
-    float: left;
-    margin-bottom: 4px;
-    text-align: right;
-    width: 13em; }
-  .formClass .inputClass {
-    color: black;
-    display: block;
-    float: left;
-    margin-left: 10px; }
-
-.popup {
-  background-color: #e0ecff;
-  border: solid red 0px;
-  color: black;
-  font-size: 80%;
-  margin: 0 0 0 0.5em;
-  position: absolute;
-  visibility: hidden;
-  outline: 0; }
-
-.goog-date-picker {
-  font: 13px Arial;
-  position: relative;
-  /* The container border */
-  float: left;
-  padding: 2px;
-  color: black;
-  /* This is for the overall container including the left bar with the week # */
-  background: #6493ff;
-  cursor: default;
-  /* This is for the button links 'Month', 'Year', 'Today', and 'None' */ }
-  .goog-date-picker table {
-    border-collapse: collapse; }
-    .goog-date-picker table tbody tr th {
-      background-color: white; }
-  .goog-date-picker th {
-    text-align: center; }
-  .goog-date-picker td {
-    text-align: center;
-    vertical-align: middle;
-    padding: 1px 3px;
-    font-size: 0.9em; }
-    .goog-date-picker td div {
-      float: left; }
-  .goog-date-picker button {
-    padding: 0 0 0 0 !important;
-    margin: 1px 0 0 0 !important;
-    border-width: 0 !important;
-    color: #6493ff !important;
-    font-weight: bold !important;
-    background: transparent !important; }
-  .goog-date-picker .goog-date-picker-btn {
-    border: none; }
-
-/* This is for the month and year drop down list */
-.goog-date-picker-menu {
-  background: #c9c3bc;
-  border: 1px solid gray;
-  outline: none;
-  position: absolute;
-  z-index: 1; }
-  .goog-date-picker-menu ul {
-    list-style: none;
-    margin: 0px;
-    padding: 0px; }
-    .goog-date-picker-menu ul li {
-      cursor: default; }
-
-/* This is the drop down selected item */
-.goog-date-picker-menu-selected {
-  background: #6d052a;
-  color: white; }
-
-/* This is the background for all the weekdays (M-F) in the current month */
-.goog-date-picker-date {
-  background: #c9c3bc; }
-
-.goog-date-picker-wday {
-  padding: 1px 3px;
-  border: 0;
-  border-bottom-width: 1px;
-  background-color: #989189 !important; }
-
-.goog-date-picker-week {
-  padding: 1px 3px;
-  border: 0;
-  background-color: white;
-  border-right-width: 1px; }
-
-.goog-date-picker-month {
-  width: 12ex; }
-
-.goog-date-picker-year {
-  width: 6ex; }
-
-/* This is for the days before the current month, and after */
-.goog-date-picker-other-month {
-  color: #edebe8; }
-
-/* This holds the month and year section of the header */
-.goog-date-picker-head {
-  background-color: white; }
-  .goog-date-picker-head td {
-    text-align: center; }
-
-/* This holds the 'Today' and 'None' section of the footer */
-.goog-date-picker-foot {
-  background-color: white; }
-
-td.goog-date-picker-today-cont {
-  text-align: center; }
-
-td.goog-date-picker-none-cont {
-  text-align: center; }
-
-/* This is the left and right column that holds the weekend */
-.goog-date-picker-wkend-start,
-.goog-date-picker-wkend-end {
-  background: #989189; }
-
-td.goog-date-picker-selected {
-  /* this is for the selected date even if that date is today */
-  background: #6d052a;
-  color: white; }
-
-.goog-date-picker-today {
-  /* For non selected current day container */
-  background: #2d3b72;
-  font-weight: bold !important;
-  border-color: #224466 #99bbdd #99bbdd #224466;
-  color: white; }
-
-.showButton {
-  background-image: url("../../image/calendar.jpg");
-  border-width: 0 !important;
-  height: 2em;
-  padding: 0 0 0 0;
-  width: 2.8em; }
-
-.simpleInformationDisplayContainer {
-  background-color: #6493ff;
-  border-color: #6d052a;
-  border-style: solid;
-  border-width: 0.2em;
-  height: 3em;
-  padding: 0 0 0 0.8em;
-  width: 10em; }
-  .simpleInformationDisplayContainer .informationRow {
-    margin-bottom: 0.8em;
-    clear: both; }
-    .simpleInformationDisplayContainer .informationRow .informationColumn {
-      color: white;
-      float: left;
-      width: 5em; }
-
-.gridBuilderContainer {
-  border-color: #444444;
+.theEditableDiv {
+  background-color: #dfdfdf;
   border-radius: 5px;
-  border-style: solid;
-  border-width: 0.1em;
-  background-color: #565656;
-  margin: 2em 0 0 0;
-  width: 60em; }
-  .gridBuilderContainer .gridBuilderHeaderRowClass {
-    background-color: #c9c3bc;
-    margin: 0 0 0.8em 0; }
-    .gridBuilderContainer .gridBuilderHeaderRowClass .gridBuilderHeaderClass {
-      color: white;
-      float: left;
-      font-weight: bold;
-      margin: 0 0.8 0 2em;
-      padding: 0.2em 0 0.2em 0;
-      width: 9em; }
-  .gridBuilderContainer .gridBuilderRowContainer {
-    height: 10em; }
-    .gridBuilderContainer .gridBuilderRowContainer .gridBuilderRowClass .gridBuilderColumnClass {
-      color: white;
-      float: left;
-      font-weight: bold;
-      margin: 0 0.8 0 2em;
-      padding: 0.2em 0 0.2em 0;
-      width: 9em; }
-  .gridBuilderContainer .gridBuilderButtonRowClass .gridBuilderPagerClass {
-    @inlcude defaultBorder;
-    background-color: #c9c3bc;
-    float: left;
-    margin: 0 5em 0 5em;
-    padding: 0.5em 0.5em 0.5em 0.5em;
-    width: 4em; }
-  .gridBuilderContainer .gridBuilderButtonRowClass .disabled {
-    background-color: #444444; }
-
-.zippyContainer {
-  margin: 1.4em 0 0 0; }
-  .zippyContainer .goog-zippy-expanded {
-    background-image: url("../../image/up.png"); }
-  .zippyContainer .goog-zippy-collapsed {
-    background-image: url("../../image/down.png"); }
-  
-body {
-   }
-  body .feedbackEntryForm {
-    width: 23.3em; }
-    body .feedbackEntryForm .feedbackCommentArea {
-      box-sizing: border-box;
-      overflow: auto;
-      resize: none;
-      width: 99%; }
-    body .feedbackEntryForm .feedbackMenuBar {
-      width: 100%; }
-      body .feedbackEntryForm .feedbackMenuBar .feedbackCategory {
-        float: left; }
-        body .feedbackEntryForm .feedbackMenuBar .feedbackCategory button {
-          border-radius: 0.2em;
-          border-style: solid;
-          border-width: 0.1em;
-          font-size: 0.6em;
-          margin: 0.5em 0.5em 0 0 !important;
-          border-color: #009ac4;
-          background-color: #009ac4;
-          color: #cceef8; }
-        body .feedbackEntryForm .feedbackMenuBar .feedbackCategory .feedbackCategorySelected {
-          background-color: #66cde9;
-          color: #009ac4; }
-      body .feedbackEntryForm .feedbackMenuBar .feedbackCharacterCounter {
-        color: #dfdfdf;
-        float: left;
-        font-size: 0.9em;
-        margin: 0.3em 0.5 0 0.5em !important; }
-      body .feedbackEntryForm .feedbackMenuBar .feedbackCounterText {
-        color: #dfdfdf;
-        float: left;
-        font-size: 0.9em;
-        margin: 0.3em 0 0 0.1em !important; }
-      body .feedbackEntryForm .feedbackMenuBar .submitButton {
-        border-radius: 0.2em;
-        border-style: solid;
-        border-width: 0.1em;
-        font-size: 0.6em;
-        margin: 0.5em 0.5em 0 0 !important;
-        background-color: #8dc63f;
-        color: #e8f4d9;
-        float: right; }
-      body .feedbackEntryForm .feedbackMenuBar .feedbackCancelButton {
-        border-radius: 0.2em;
-        border-style: solid;
-        border-width: 0.1em;
-        font-size: 0.6em;
-        margin: 0.5em 0.5em 0 0 !important;
-        background-color: #984545;
-        color: white;
-        float: right; }
+  height: 10em;
+  padding: 1em 1em 1em 1em;
+  width: 10em; }
+  .theEditableDiv .textContainer {
+    background-color: #545454;
+    border-radius: 5px;
+    color: white;
+    height: 8em;
+    padding: 1em 1em 1em 1em;
+    width: 8em; }
+  .theEditableDiv .textUpdateForm .editTextArea {
+    border-radius: 5px;
+    height: 10em;
+    width: 11em; }
+  .theEditableDiv .textUpdateForm button {
+    background-color: #cceef8;
+    border-color: #009ac4;
+    border-style: solid;
+    border-Width: 0.2em;
+    color: #009ac4;
+    font-size: 1em;
+    padding: 0 0.1em 0.1em 0.1em;
+    border-radius: 5px;
+    height: 1.5em;
+    margin: 0 0.2em 0 0;
+    width: 1.5em; }
+    .theEditableDiv .textUpdateForm button:hover {
+      background-color: #009ac4 !important;
+      color: #cceef8; }
+  .theEditableDiv .textUpdateForm #textUpdateForm_messageBox {
+    border-color: #444444;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 0.1em;
+    margin: 1em 0 0 0; }
+    .theEditableDiv .textUpdateForm #textUpdateForm_messageBox div {
+      padding: 0.3em 0.3em 0.3em 0.3em; }
+    .theEditableDiv .textUpdateForm #textUpdateForm_messageBox .error {
+      background-color: #984545;
+      color: white; }
+    .theEditableDiv .textUpdateForm #textUpdateForm_messageBox .info {
+      background-color: #628a2c;
+      color: white; }
