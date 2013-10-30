@@ -1,5 +1,6 @@
 (ns testboard.view
-  (:use [hiccup core page]))
+  (:use [hiccup core page]
+        [cheshire.core :only (generate-string)]))
 
 
 (defn master-page [to-inject]
@@ -54,8 +55,12 @@
                 [:script
                  "var EditableDiv_ = src.base.control.editableDiv; "
                  "var holder = document.getElementById('mainContainer'); "
-                 "var editableDiv = EditableDiv_.initialize('theEditableDiv', 'this is the text', '');"
+                 "var editableDiv = EditableDiv_.initialize('theEditableDiv', 'this is the text', '/editabledivresult/');"
                  "holder.appendChild(editableDiv);"]]))
+
+
+(defn editable-div-page-result [text]
+  (generate-string {:MessageItems [{:Message "hi" :MessageType "error"}]}))
 ;; (defn master-page [to-inject]
 ;;   (html5
 ;;    [:head
