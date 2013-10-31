@@ -15,8 +15,8 @@
   (GET "/formattext" [] (format-text-page))
   (GET "/popupdatepicker" [] (popup-date-picker-page))
   (GET "/editablediv" [] (editable-div-page))
-  (|-| editabledivresult ?text
-       (editable-div-page-result text))
+  (|-| editabledivresult ?text ?itemId
+       (editable-div-page-result text itemId))
   (route/resources "/")
   (route/not-found "Not Found"))
 

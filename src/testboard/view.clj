@@ -1,5 +1,6 @@
 (ns testboard.view
-  (:use [hiccup core page]
+  (:use [clojure.string :only (join)]
+        [hiccup core page]
         [cheshire.core :only (generate-string)]))
 
 
@@ -57,10 +58,11 @@
                 [:script
                  "var EditableDiv_ = src.base.control.editableDiv; "
                  "var holder = document.getElementById('mainContainer'); "
-                 "var editableDiv = EditableDiv_.initialize('theEditableDiv', 'this is the text', '/editabledivresult/');"
+                 "var editableDiv = EditableDiv_.initialize('theEditableDiv', 'this is the text', '1', '/editabledivresult/');"
                  "holder.appendChild(editableDiv);"]]))
 
 
-(defn editable-div-page-result [text]
-  (generate-string {:MessageItems [{:Message text :MessageType "error"}]}))
+(defn editable-div-page-result [text id]
+  (generate-string {:MessageItems [{:Message (join [text id]) :MessageType "error"}]}))
 
+;;
