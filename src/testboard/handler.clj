@@ -15,8 +15,11 @@
   (GET "/formattext" [] (format-text-page))
   (GET "/popupdatepicker" [] (popup-date-picker-page))
   (GET "/editablediv" [] (editable-div-page))
+  (GET "/gridbuilderpage" [] (grid-builder-page))
   (|-| editabledivresult ?text ?itemId
        (editable-div-page-result text itemId))
+  (|-| gridbuilderdata ?page
+       (grid-builder-data page))
   (route/resources "/")
   (route/not-found "Not Found"))
 

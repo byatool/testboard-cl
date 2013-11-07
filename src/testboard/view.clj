@@ -62,7 +62,73 @@
                  "holder.appendChild(editableDiv);"]]))
 
 
+(defn grid-builder-page []
+  (master-page [:div
+                [:div {:id "mainContainer"}]
+                [:script
+                 "var options = {};"
+                 "options[src.base.control.gridBuilder.constant.ContainerClass] = 'gridBuilderContainer';"
+                 "options[src.base.control.gridBuilder.constant.ContainerId] = 'gridBuilderContainer';"
+                 "options[src.base.control.gridBuilder.constant.Url] = '/gridbuilderdata/';"
+                 "options[src.base.control.gridBuilder.constant.Parameters] = { 'page': 0 };"
+                 "options[src.base.control.gridBuilder.constant.Map] = ["
+                 "  { 'headerText': 'Last Name', 'propertyName': 'LastName', 'class': 'short' },"
+                 "  { 'headerText': 'First Name', 'propertyName': 'FirstName', 'class': 'short' },"
+                 "  { 'headerText': 'Email Address', 'propertyName': 'Email', 'class': 'long' },"
+                 "  { 'headerText': 'Social Security Number', 'propertyName': 'Ssn', 'class': 'medium' }"
+                 "];"
+                 "options[src.base.control.gridBuilder.constant.ShowHeader] = true;"
+                 "options[src.base.control.gridBuilder.constant.RowClickHandler] = function(row) { alert(row.innerHTML); };"
+                 "var result = src.base.control.gridBuilder.initialize(options);"
+                 "document.getElementById('mainContainer').appendChild(result);" ]]))
+
+
 (defn editable-div-page-result [text id]
   (generate-string {:MessageItems [{:Message (join [text id]) :MessageType "error"}]}))
 
-;;
+
+(defn previous-page [page]
+  (if (> page 0)
+    (- page 1 )
+    page))
+
+(defn next-page [page totalCountOfPages]
+  (if (< page (- totalCountOfPages 1))
+    (+ 1 page)
+    page))
+
+(defn create-user [id]
+  {:LastName (clojure.string/join ["Last" id])
+   :FirstName (clojure.string/join ["First" id])
+   :Ssn (clojure.string/join ["111-11-111" id])
+   :Email (clojure.string/join ["email@company" id ".com"])})
+
+(defn retrieve-users [page perPage]
+  (map #(create-user %) (take perPage (drop (* page 5)(range 20)))))
+
+
+(defn grid-builder-data [page]
+  (let [totalCountOfPages 4
+        previousPage (previous-page (Integer/parseInt page))
+        nextPage (next-page (Integer/parseInt page) totalCountOfPages)]
+    (generate-string {:PreviousPage previousPage
+                      :NextPage nextPage
+                      :TotalCountOfPages totalCountOfPages
+                      :List (retrieve-users (Integer/parseInt page) 5)})))
+
+
+
+(generate-string {:PreviousPage 1
+                  :NextPage 2
+                  :TotalCountOfPages 4
+                  :List (retrieve-users 0 5)}) 
+
+;; (generate-string (retrieve-users 0 1)) 
+;; (grid-builder-data 1)
+;; :List [{:LastName "Last Name 1"
+;;         :FirstName "First Name 1"
+;;         :Ssn "111111111"
+;;         :Email "email1" }]}))) 
+
+
+

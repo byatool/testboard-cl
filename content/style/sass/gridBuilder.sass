@@ -1,0 +1,68 @@
+$gridBuilderRowPadding : .5em
+
+@mixin gridBuilderColumn
+  color                : $white
+  float                : left
+  font-weight          : bold
+  margin               : 0 1em 0 0
+  padding              : .2em 0 .2em 0
+
+
+.gridBuilderContainer
+  @include defaultBorder
+  background-color     : $midGrey
+  margin               : 2em 0 0 0
+  width                : 50em
+
+  .short
+    width              : 8em
+  .medium
+    width              : 12em
+  .long
+    width              : 15em
+
+  .gridBuilderHeaderRowClass
+    background-color   : $lightGrey
+    margin             : 0 0 .5m 0
+    padding            : 0 0 0 $gridBuilderRowPadding
+
+    .gridBuilderHeaderClass
+      @include gridBuilderColumn
+
+
+  .gridBuilderRowContainer
+    height: 8em
+    margin             : 0 0 .5em 0
+    padding            : 0 0 0 $gridBuilderRowPadding
+
+    .gridBuilderMessageClass
+      color: $white
+      font-size: 2em
+      margin: .5em .5em .5em .5em
+
+    .gridBuilderRowClass
+      .gridBuilderColumnClass
+        @include gridBuilderColumn
+
+
+  .gridBuilderButtonRowClass
+    padding            : 0 0 .5em $gridBuilderRowPadding
+
+    .pagerEnabledClass
+      @inlcude defaultBorder
+      background-color : $lightGrey
+      float            : left
+      font-size        : 1em
+      font-weight      : bold
+      margin           : 0 .5em 0 0
+      padding          : .5em .5em .5em .5em
+      width            : 2em
+    .pagerDisabledClass
+      @inlcude defaultBorder
+      background-color : $readOnlyBlue
+      float            : left
+      font-size        : 1em
+      font-weight      : bold
+      margin           : 0 .5em 0 0
+      padding          : .5em .5em .5em .5em
+      width            : 2em

@@ -53,3 +53,62 @@
     .theEditableDiv .textUpdateForm #textUpdateForm_messageBox .info {
       background-color: #628a2c;
       color: white; }
+
+.gridBuilderContainer {
+  border-color: #444444;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 0.1em;
+  background-color: #565656;
+  margin: 2em 0 0 0;
+  width: 50em; }
+  .gridBuilderContainer .short {
+    width: 8em; }
+  .gridBuilderContainer .medium {
+    width: 12em; }
+  .gridBuilderContainer .long {
+    width: 15em; }
+  .gridBuilderContainer .gridBuilderHeaderRowClass {
+    background-color: #c9c3bc;
+    margin: 0 0 0.5m 0;
+    padding: 0 0 0 0.5em; }
+    .gridBuilderContainer .gridBuilderHeaderRowClass .gridBuilderHeaderClass {
+      color: white;
+      float: left;
+      font-weight: bold;
+      margin: 0 1em 0 0;
+      padding: 0.2em 0 0.2em 0; }
+  .gridBuilderContainer .gridBuilderRowContainer {
+    height: 8em;
+    margin: 0 0 0.5em 0;
+    padding: 0 0 0 0.5em; }
+    .gridBuilderContainer .gridBuilderRowContainer .gridBuilderMessageClass {
+      color: white;
+      font-size: 2em;
+      margin: 0.5em 0.5em 0.5em 0.5em; }
+    .gridBuilderContainer .gridBuilderRowContainer .gridBuilderRowClass .gridBuilderColumnClass {
+      color: white;
+      float: left;
+      font-weight: bold;
+      margin: 0 1em 0 0;
+      padding: 0.2em 0 0.2em 0; }
+  .gridBuilderContainer .gridBuilderButtonRowClass {
+    padding: 0 0 0.5em 0.5em; }
+    .gridBuilderContainer .gridBuilderButtonRowClass .pagerEnabledClass {
+      @inlcude defaultBorder;
+      background-color: #c9c3bc;
+      float: left;
+      font-size: 1em;
+      font-weight: bold;
+      margin: 0 0.5em 0 0;
+      padding: 0.5em 0.5em 0.5em 0.5em;
+      width: 2em; }
+    .gridBuilderContainer .gridBuilderButtonRowClass .pagerDisabledClass {
+      @inlcude defaultBorder;
+      background-color: #009cc7;
+      float: left;
+      font-size: 1em;
+      font-weight: bold;
+      margin: 0 0.5em 0 0;
+      padding: 0.5em 0.5em 0.5em 0.5em;
+      width: 2em; }
