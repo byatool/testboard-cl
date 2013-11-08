@@ -118,17 +118,3 @@
 
 
 
-(generate-string {:PreviousPage 1
-                  :NextPage 2
-                  :TotalCountOfPages 4
-                  :List (retrieve-users 0 5)}) 
-
-;; (generate-string (retrieve-users 0 1)) 
-;; (grid-builder-data 1)
-;; :List [{:LastName "Last Name 1"
-;;         :FirstName "First Name 1"
-;;         :Ssn "111111111"
-;;         :Email "email1" }]}))) 
-
-
-
