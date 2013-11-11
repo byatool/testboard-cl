@@ -6,32 +6,45 @@ $gridBuilderRowPadding   : .5em
   font-weight            : bold
   margin                 : 0 1em 0 0
   padding                : .2em .2em .2em .2em
+  
     
-
 .gridBuilderContainer
   @include defaultBorder
   background-color       : $midGrey
   margin                 : 2em 0 0 0
   width                  : 50em
-  
+
   .short
     width                : 8em
   .medium
     width                : 12em
   .long
     width                : 15em
-
+    
   .gridBuilderHeaderRowClass
-    background-color     : $lightGrey
-    margin               : 0 0 .5m 0
+    background-color     : $greyTwo
+    margin               : 0 0 .5em 0
     padding              : 0 0 0 0
-
+      
     .gridBuilderHeaderClass
       @include gridBuilderColumn
+      border-width: .2em .2em .2em .2em
+      border-style: solid
+      border-color: $greyTwo $greyTwo $greyTwo $greyTwo
       &:hover
-        background-color : $greyTwo !important
+        background-color : $greyOne !important
+        color: $greyFive
+        
+    .ascending
+      border-width: .2em .2em .2em .2em
+      border-style: solid
+      border-color: $greyFive $greyTwo $greyTwo $greyTwo
       
-          
+    .descending
+      border-width: .2em .2em .2em .2em
+      border-style: solid
+      border-color:  $greyTwo $greyTwo $greyFive $greyTwo
+      
   .gridBuilderRowContainer
     height               : 8em
     margin               : 0 0 .5em 0
