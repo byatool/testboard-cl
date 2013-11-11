@@ -1,7 +1,9 @@
 (ns testboard.view
-  (:use [clojure.string :only (join)]
+  (:use [clojure.string :only (join capitalize blank?)]
         [hiccup core page]
-        [cheshire.core :only (generate-string)]))
+        [cheshire.core :only (generate-string)]
+        faker.name
+        faker.internet))
 
 
 (defn master-page [to-inject]
@@ -98,23 +100,35 @@
     page))
 
 (defn create-user [id]
-  {:LastName (clojure.string/join ["Last" id])
-   :FirstName (clojure.string/join ["First" id])
+  {:Id id
+   :LastName (last-name)
+   :FirstName (first-name)
    :Ssn (clojure.string/join ["111-11-111" id])
-   :Email (clojure.string/join ["email@company" id ".com"])})
+   :Email (email)})
 
-(defn retrieve-users [page perPage]
-  (map #(create-user %) (take perPage (drop (* page 5)(range 20)))))
+(defn create-users []
+  (map create-user (range 0 20)))
 
+(def users (create-users))
 
-(defn grid-builder-data [page]
+(defn to-key [sortBy]
+  (keyword (str (capitalize (first sortBy)) (join (rest sortBy)))))
+
+(defn retrieve-users [page perPage sortBy]
+  (take perPage
+        (drop (* page 5)
+              (sort-by (to-key sortBy) users))))
+
+;;(retrieve-users 0 5 "FirstName")
+
+(defn grid-builder-data [page sortBy]
   (let [totalCountOfPages 4
         previousPage (previous-page (Integer/parseInt page))
         nextPage (next-page (Integer/parseInt page) totalCountOfPages)]
     (generate-string {:PreviousPage previousPage
                       :NextPage nextPage
                       :TotalCountOfPages totalCountOfPages
-                      :List (retrieve-users (Integer/parseInt page) 5)})))
+                      :List (retrieve-users (Integer/parseInt page) 5 sortBy)})))
 
-
-
+;; (set! users (create-users))
+;; (retrieve-users 1 10 "lastName")

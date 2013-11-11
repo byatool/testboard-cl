@@ -71,17 +71,19 @@
   .gridBuilderContainer .gridBuilderHeaderRowClass {
     background-color: #c9c3bc;
     margin: 0 0 0.5m 0;
-    padding: 0 0 0 0.5em; }
+    padding: 0 0 0 0; }
     .gridBuilderContainer .gridBuilderHeaderRowClass .gridBuilderHeaderClass {
       color: white;
       float: left;
       font-weight: bold;
       margin: 0 1em 0 0;
-      padding: 0.2em 0 0.2em 0; }
+      padding: 0.2em 0.2em 0.2em 0.2em; }
+      .gridBuilderContainer .gridBuilderHeaderRowClass .gridBuilderHeaderClass:hover {
+        background-color: #9e9e9e !important; }
   .gridBuilderContainer .gridBuilderRowContainer {
     height: 8em;
     margin: 0 0 0.5em 0;
-    padding: 0 0 0 0.5em; }
+    padding: 0 0 0 0; }
     .gridBuilderContainer .gridBuilderRowContainer .gridBuilderMessageClass {
       color: white;
       font-size: 2em;
@@ -93,9 +95,9 @@
       float: left;
       font-weight: bold;
       margin: 0 1em 0 0;
-      padding: 0.2em 0 0.2em 0; }
+      padding: 0.2em 0.2em 0.2em 0.2em; }
   .gridBuilderContainer .gridBuilderButtonRowClass {
-    padding: 0 0 0.5em 0.5em; }
+    padding: 0 0 0.5em 0; }
     .gridBuilderContainer .gridBuilderButtonRowClass .pagerEnabledClass {
       @inlcude defaultBorder;
       background-color: #c9c3bc;
@@ -105,6 +107,8 @@
       margin: 0 0.5em 0 0;
       padding: 0.5em 0.5em 0.5em 0.5em;
       width: 2em; }
+      .gridBuilderContainer .gridBuilderButtonRowClass .pagerEnabledClass:hover {
+        background-color: #9e9e9e !important; }
     .gridBuilderContainer .gridBuilderButtonRowClass .pagerDisabledClass {
       @inlcude defaultBorder;
       background-color: #009cc7;
