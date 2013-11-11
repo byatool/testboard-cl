@@ -23,7 +23,10 @@
                 [:br]
                 [:a {:href "/formattext"} "format text "]
                 [:br]
-                [:a {:href "/popupdatepicker"} "popup date picker "]]))
+                [:a {:href "/popupdatepicker"} "popup date picker "]
+                [:br]
+                [:a {:href "/gridbuilderpage"} "grid builder "]
+                ]))
 
 
 (defn format-text-page []
@@ -89,6 +92,10 @@
   (generate-string {:MessageItems [{:Message (join [text id]) :MessageType "error"}]}))
 
 
+
+
+;; Grid Builder
+
 (defn previous-page [page]
   (if (> page 0)
     (- page 1 )
@@ -123,8 +130,7 @@
                          #(compare %1 %2))
                        users))))
 
-;;(retrieve-users 0 5 "FirstName")
-
+;; Grid Builder Post
 (defn grid-builder-data [page sortBy descending]
   (let [totalCountOfPages 4
         previousPage (previous-page (Integer/parseInt page))
@@ -133,10 +139,3 @@
                       :NextPage nextPage
                       :TotalCountOfPages totalCountOfPages
                       :List (retrieve-users (Integer/parseInt page) 5 sortBy descending)})))
-
-;; (set! users (create-users))
-;;
-;;(grid-builder-data "0" "firstName" true)
-
-
-
