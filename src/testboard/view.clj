@@ -114,21 +114,29 @@
 (defn to-key [sortBy]
   (keyword (str (capitalize (first sortBy)) (join (rest sortBy)))))
 
-(defn retrieve-users [page perPage sortBy]
+(defn retrieve-users [page perPage sortBy descending]
   (take perPage
         (drop (* page 5)
-              (sort-by (to-key sortBy) users))))
+              (sort-by (to-key sortBy)
+                       (if descending
+                         #(compare %2 %1)
+                         #(compare %1 %2))
+                       users))))
 
 ;;(retrieve-users 0 5 "FirstName")
 
-(defn grid-builder-data [page sortBy]
+(defn grid-builder-data [page sortBy descending]
   (let [totalCountOfPages 4
         previousPage (previous-page (Integer/parseInt page))
         nextPage (next-page (Integer/parseInt page) totalCountOfPages)]
     (generate-string {:PreviousPage previousPage
                       :NextPage nextPage
                       :TotalCountOfPages totalCountOfPages
-                      :List (retrieve-users (Integer/parseInt page) 5 sortBy)})))
+                      :List (retrieve-users (Integer/parseInt page) 5 sortBy descending)})))
 
 ;; (set! users (create-users))
-;; (retrieve-users 1 10 "lastName")
+;;
+;;(grid-builder-data "0" "firstName" true)
+
+
+

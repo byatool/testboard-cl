@@ -19,9 +19,10 @@
   (GET "/gridbuilderpage" [] (grid-builder-page))
   (|-| editabledivresult ?text ?itemId
        (editable-div-page-result text itemId))
-  (|-| gridbuilderdata ?page ?sortBy
-       (let [sort (if (blank? sortBy) "firstName" sortBy)]
-         (grid-builder-data page sort)))
+  (|-| gridbuilderdata ?page ?sortBy ?descending
+       (let [sort (if (blank? sortBy) "firstName" sortBy)
+             is-descending (Boolean/valueOf descending)]
+         (grid-builder-data page sort is-descending)))
   (route/resources "/")
   (route/not-found "Not Found"))
 
