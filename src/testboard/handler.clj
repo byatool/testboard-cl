@@ -17,12 +17,17 @@
   (GET "/popupdatepicker" [] (popup-date-picker-page))
   (GET "/editablediv" [] (editable-div-page))
   (GET "/gridbuilderpage" [] (grid-builder-page))
+  (GET "/wallpage" [subjectId] (wall-page subjectId))
   (|-| editabledivresult ?text ?itemId
        (editable-div-page-result text itemId))
   (|-| gridbuilderdata ?page ?sortBy ?descending
        (let [sort (if (blank? sortBy) "firstName" sortBy)
              is-descending (Boolean/valueOf descending)]
          (grid-builder-data page sort is-descending)))
+  (|-| wallpagedata ?subjectId ?page
+       (wall-page-data (Integer/parseInt subjectId) (Integer/parseInt page)))
+  (|-| wallpagepost ?entryId ?entryTextbox
+       (wall-page-post entryId entryTextbox))
   (route/resources "/")
   (route/not-found "Not Found"))
 

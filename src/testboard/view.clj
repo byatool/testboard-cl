@@ -1,9 +1,13 @@
-(ns testboard.view
+ (ns testboard.view
   (:use [clojure.string :only (join capitalize blank?)]
         [hiccup core page]
         [cheshire.core :only (generate-string)]
+        [testboard.utility :only (previous-page next-page)]
         faker.name
-        faker.internet))
+        faker.internet)
+  (:require
+   [clj-time.core :as time]
+   [clj-time.format :as time-format]))
 
 
 (defn master-page [to-inject]
@@ -85,7 +89,7 @@
                  "options[src.base.control.gridBuilder.constant.ShowHeader] = true;"
                  "options[src.base.control.gridBuilder.constant.RowClickHandler] = function(row) { alert(row.innerHTML); };"
                  "var result = src.base.control.gridBuilder.initialize(options);"
-                 "document.getElementById('mainContainer').appendChild(result);" ]]))
+                 "document.getElementById('mainContainer').appendChild(result[src.base.control.controlConstant.CreatedControl]);" ]]))
 
 
 (defn editable-div-page-result [text id]
@@ -94,17 +98,52 @@
 
 
 
+;; ;; wall
+(defn wall-page [id]
+  (master-page [:div
+                [:div {:id "mainContainer"}]
+                [:script
+                 "var result = src.base.control.wall.initialize('mainWall', '/wallpagepost/', '/wallpagedata/', '1');"
+                 "document.getElementById('mainContainer').appendChild(result);"]]))
+
+
+(def subject-items [])
+(def current-id 0)
+
+(defn create-ui-subject-item [item]
+  {:Id (:Id item)
+   :SubjectId (:SubjectId item)
+   :Text (:Text item)
+   :Date (time-format/unparse (time-format/formatter "dd-MM-yyyy HH:mm:ss") (:Date item))})
+
+(defn add-to-subject [subject-id id text]
+  (def subject-items
+    (vec
+     (cons {:Id id
+            :Text text
+            :SubjectId subject-id
+            :Date (time/now)}
+           subject-items))))
+
+(defn wall-page-post [subject-id text]
+  (do
+    (def current-id (+ current-id 1))
+    (add-to-subject subject-id current-id text)
+    (generate-string 
+     {:MessageItems [{:Message "Success" :MessageType "info"}]})))
+
+(defn wall-page-data [subject-id page]
+  (let [totalCountOfPages 4
+        previousPage (previous-page page)
+        nextPage (next-page page totalCountOfPages)]
+    (generate-string {:PreviousPage previousPage
+                      :NextPage nextPage
+                      :TotalCountOfPages totalCountOfPages
+                      :List (map create-ui-subject-item  (reverse (sort-by :Date subject-items)))})))
+
+
 ;; Grid Builder
 
-(defn previous-page [page]
-  (if (> page 0)
-    (- page 1 )
-    page))
-
-(defn next-page [page totalCountOfPages]
-  (if (< page (- totalCountOfPages 1))
-    (+ 1 page)
-    page))
 
 (defn create-user [id]
   {:Id id
