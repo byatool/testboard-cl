@@ -28,6 +28,8 @@
        (wall-page-data (Integer/parseInt subjectId) (Integer/parseInt page)))
   (|-| wallpagepost  ?entryTextbox ?subjectId
        (wall-page-post entryTextbox subjectId))
+  (|-| wallpageedit  ?text ?itemId
+       (wall-page-edit (Integer/parseInt itemId) text))
   (route/resources "/")
   (route/not-found "Not Found"))
 

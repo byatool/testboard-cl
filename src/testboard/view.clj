@@ -1,4 +1,4 @@
- (ns testboard.view
+(ns testboard.view
   (:use [clojure.string :only (join capitalize blank?)]
         [hiccup core page]
         [cheshire.core :only (generate-string)]
@@ -33,34 +33,6 @@
                 ]))
 
 
-(defn format-text-page []
-  (master-page [:div
-                [:div {:id "mainContainer"}]
-                [:script
-                 "var FormatTextAreaDisplay_ = src.base.control.formatTextAreaDisplay; "
-                 "var holder = document.getElementById('mainContainer'); "
-                 "var formatText = FormatTextAreaDisplay_.initialize(document);"
-                 "holder.appendChild(formatText);"]]))
-
-
-(defn popup-date-picker-page []
-  (master-page [:div {:id "mainContainer"}
-                [:div
-                 [:input {:type "text" :id "targetTextbox" :class "floatLeft"}]
-                 [:div {:id "datePickerHolder" :class "floatLeft"}]
-                 [:div {:class "clearBoth"}]
-                 [:script
-                  "var DatePicker = src.base.control.popupDatePicker; "
-                  "var textboxName = 'targetTextbox'; "
-                  "var holderName = 'datePickerHolder'; "
-                  "var datePickerOptions = {};"
-                  "datePickerOptions[DatePicker.constant.ButtonText] = 'Date';"
-                  "datePickerOptions[DatePicker.constant.TextboxName] = textboxName;"
-                  "var holder = document.getElementById(holderName);"
-                  "var datePicker = DatePicker.create(datePickerOptions);"
-                  "holder.appendChild(datePicker);"]]]))
-
-
 (defn editable-div-page []
   (master-page [:div
                 [:div {:id "mainContainer"}]
@@ -69,6 +41,16 @@
                  "var holder = document.getElementById('mainContainer'); "
                  "var editableDiv = EditableDiv_.initialize('theEditableDiv', 'this is the text', '1', '/editabledivresult/');"
                  "holder.appendChild(editableDiv);"]]))
+
+
+(defn format-text-page []
+  (master-page [:div
+                [:div {:id "mainContainer"}]
+                [:script
+                 "var FormatTextAreaDisplay_ = src.base.control.formatTextAreaDisplay; "
+                 "var holder = document.getElementById('mainContainer'); "
+                 "var formatText = FormatTextAreaDisplay_.initialize(document);"
+                 "holder.appendChild(formatText);"]]))
 
 
 (defn grid-builder-page []
@@ -92,19 +74,46 @@
                  "document.getElementById('mainContainer').appendChild(result[src.base.control.controlConstant.CreatedControl]);" ]]))
 
 
-(defn editable-div-page-result [text id]
-  (generate-string {:MessageItems [{:Message (join [text id]) :MessageType "error"}]}))
+(defn popup-date-picker-page []
+  (master-page [:div {:id "mainContainer"}
+                [:div
+                 [:input {:type "text" :id "targetTextbox" :class "floatLeft"}]
+                 [:div {:id "datePickerHolder" :class "floatLeft"}]
+                 [:div {:class "clearBoth"}]
+                 [:script
+                  "var DatePicker = src.base.control.popupDatePicker; "
+                  "var textboxName = 'targetTextbox'; "
+                  "var holderName = 'datePickerHolder'; "
+                  "var datePickerOptions = {};"
+                  "datePickerOptions[DatePicker.constant.ButtonText] = 'Date';"
+                  "datePickerOptions[DatePicker.constant.TextboxName] = textboxName;"
+                  "var holder = document.getElementById(holderName);"
+                  "var datePicker = DatePicker.create(datePickerOptions);"
+                  "holder.appendChild(datePicker);"]]]))
 
 
-
-
-;; ;; wall
 (defn wall-page [id]
   (master-page [:div
                 [:div {:id "mainContainer"}]
                 [:script
-                 "var result = src.base.control.wall.initialize('mainWall', '/wallpagepost/', '/wallpagedata/', '1');"
+                 "var result = src.base.control.wall.initialize('mainWall', '/wallpagepost/', '/wallpagedata/', '1','/wallpageedit/');"
                  "document.getElementById('mainContainer').appendChild(result);"]]))
+
+
+;; Editable Div Post
+
+(defn editable-div-page-result [text id]
+  (generate-string {:MessageItems [{:Message (join [text id]) :MessageType "error"}]}))
+
+
+;; Wall Post
+;;(nth subject-items 1)
+;;(assoc subject-items {:Id 1, :Text "ad", :SubjectId 1, :Date #<DateTime 2013-11-13T17:11:17.964Z>, :Username "sean"} )
+
+;;(assoc (first subject-items) :Username "test")
+;;
+
+
 
 
 (def subject-items [])
@@ -127,14 +136,16 @@
             :Username user-name}
            subject-items))))
 
+
 (defn retrieve-subject-items [page per-page sort descending]
-  (take per-page
-        (drop (* page 5)
-              (sort-by (to-key sort)
-                       (if descending
-                         #(compare %2 %1)
-                         #(compare %1 %2))
-                       subject-items))))
+  (->
+   (sort-by (to-key sort)
+            (if descending
+              #(compare %2 %1)
+              #(compare %1 %2))
+            subject-items)
+   ((partial drop (* page 5)))
+   ((partial take per-page))))
 
 (defn wall-page-post [text subject-id]
   (do
@@ -153,22 +164,22 @@
                       :List (map create-ui-subject-item (retrieve-subject-items page 5 "date" true))})))
 
 
-;;(reverse (sort-by :Date subject-items))
-;;(to-key "date")
-;;(retrieve-subject-items 0 5 "date" true)
-;;(wall-page-data 1 1)
+(defn edit-list [id text]
+  (map #(if (= (:Id %) id)
+          (assoc % :Text text)
+          %)
+       subject-items))
 
 
+(defn wall-page-edit [item-id text]
+  (do
+    (def subject-items
+      (edit-list item-id text))
+    (generate-string
+     {:MessageItems [{:Message "Success" :MessageType "info"}]})))
 
-;; (wall-page-post "a" 1)
-;; (wall-page-post "b" 2)
-;; (wall-page-post "c" 3)
-;; (wall-page-post "d" 4)
-;; (wall-page-post "e" 5)
-;; (wall-page-post "f" 6)
 
-;; Grid Builder
-
+;; Grid Builder Post
 
 (defn create-user [id]
   {:Id id
@@ -181,9 +192,6 @@
   (map create-user (range 0 20)))
 
 (def users (create-users))
-
-
-
 
 (defn retrieve-users [page per-page sort descending]
   (take per-page
