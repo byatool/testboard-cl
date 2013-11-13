@@ -1,4 +1,6 @@
-(ns testboard.utility)
+(ns testboard.utility
+  (:use
+   [clojure.string :only (join capitalize blank?)]))
 
 (defn previous-page [page]
   (if (> page 0)
@@ -9,3 +11,7 @@
   (if (< page (- total-count-of-pages 1))
     (+ 1 page)
     page))
+
+
+(defn to-key [sortBy]
+  (keyword (str (capitalize (first sortBy)) (join (rest sortBy)))))

@@ -26,8 +26,8 @@
          (grid-builder-data page sort is-descending)))
   (|-| wallpagedata ?subjectId ?page
        (wall-page-data (Integer/parseInt subjectId) (Integer/parseInt page)))
-  (|-| wallpagepost ?entryId ?entryTextbox
-       (wall-page-post entryId entryTextbox))
+  (|-| wallpagepost  ?entryTextbox ?subjectId
+       (wall-page-post entryTextbox subjectId))
   (route/resources "/")
   (route/not-found "Not Found"))
 

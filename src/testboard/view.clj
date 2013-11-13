@@ -2,7 +2,7 @@
   (:use [clojure.string :only (join capitalize blank?)]
         [hiccup core page]
         [cheshire.core :only (generate-string)]
-        [testboard.utility :only (previous-page next-page)]
+        [testboard.utility :only (previous-page next-page to-key)]
         faker.name
         faker.internet)
   (:require
@@ -114,33 +114,58 @@
   {:Id (:Id item)
    :SubjectId (:SubjectId item)
    :Text (:Text item)
-   :Date (time-format/unparse (time-format/formatter "dd-MM-yyyy HH:mm:ss") (:Date item))})
+   :Date (time-format/unparse (time-format/formatter "dd-MM-yyyy HH:mm:ss") (:Date item))
+   :Username (:Username item)})
 
-(defn add-to-subject [subject-id id text]
+(defn add-to-subject [subject-id id text user-name]
   (def subject-items
     (vec
      (cons {:Id id
             :Text text
             :SubjectId subject-id
-            :Date (time/now)}
+            :Date (time/now)
+            :Username user-name}
            subject-items))))
 
-(defn wall-page-post [subject-id text]
+(defn retrieve-subject-items [page per-page sort descending]
+  (take per-page
+        (drop (* page 5)
+              (sort-by (to-key sort)
+                       (if descending
+                         #(compare %2 %1)
+                         #(compare %1 %2))
+                       subject-items))))
+
+(defn wall-page-post [text subject-id]
   (do
     (def current-id (+ current-id 1))
-    (add-to-subject subject-id current-id text)
+    (add-to-subject subject-id current-id text "Sean")
     (generate-string 
      {:MessageItems [{:Message "Success" :MessageType "info"}]})))
 
 (defn wall-page-data [subject-id page]
-  (let [totalCountOfPages 4
+  (let [totalCountOfPages (/ (count subject-items) 5)
         previousPage (previous-page page)
         nextPage (next-page page totalCountOfPages)]
     (generate-string {:PreviousPage previousPage
                       :NextPage nextPage
                       :TotalCountOfPages totalCountOfPages
-                      :List (map create-ui-subject-item  (reverse (sort-by :Date subject-items)))})))
+                      :List (map create-ui-subject-item (retrieve-subject-items page 5 "date" true))})))
 
+
+;;(reverse (sort-by :Date subject-items))
+;;(to-key "date")
+;;(retrieve-subject-items 0 5 "date" true)
+;;(wall-page-data 1 1)
+
+
+
+;; (wall-page-post "a" 1)
+;; (wall-page-post "b" 2)
+;; (wall-page-post "c" 3)
+;; (wall-page-post "d" 4)
+;; (wall-page-post "e" 5)
+;; (wall-page-post "f" 6)
 
 ;; Grid Builder
 
@@ -157,13 +182,13 @@
 
 (def users (create-users))
 
-(defn to-key [sortBy]
-  (keyword (str (capitalize (first sortBy)) (join (rest sortBy)))))
 
-(defn retrieve-users [page perPage sortBy descending]
-  (take perPage
+
+
+(defn retrieve-users [page per-page sort descending]
+  (take per-page
         (drop (* page 5)
-              (sort-by (to-key sortBy)
+              (sort-by (to-key sort)
                        (if descending
                          #(compare %2 %1)
                          #(compare %1 %2))
@@ -171,7 +196,7 @@
 
 ;; Grid Builder Post
 (defn grid-builder-data [page sortBy descending]
-  (let [totalCountOfPages 4
+  (let [totalCountOfPages (/ (count users) 5)
         previousPage (previous-page (Integer/parseInt page))
         nextPage (next-page (Integer/parseInt page) totalCountOfPages)]
     (generate-string {:PreviousPage previousPage
