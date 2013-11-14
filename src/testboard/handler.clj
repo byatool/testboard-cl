@@ -4,7 +4,8 @@
         [hiccup.middleware :only (wrap-base-url)]
         [testboard.compojure-macro :only (|-|)]
         [clojure.string :only (blank?)]
-        testboard.view)
+        testboard.view
+        testboard.wall)
   (:require [compojure.handler :as handler]
             [compojure.route :as route]
             [cheshire.core :refer :all]))
