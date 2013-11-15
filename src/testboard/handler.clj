@@ -14,9 +14,10 @@
 
 (defroutes app-routes
   (GET "/" [] (index-page))
-  (GET "/formattext" [] (format-text-page))
   (GET "/popupdatepicker" [] (popup-date-picker-page))
   (GET "/editablediv" [] (editable-div-page))
+  (GET "/formattext" [] (format-text-page))
+  (GET "/formbuilderpage" [] (form-builder-page))
   (GET "/gridbuilderpage" [] (grid-builder-page))
   (GET "/wallpage" [subjectId] (wall-page subjectId))
   (|-| editabledivresult ?text ?itemId

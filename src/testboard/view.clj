@@ -101,6 +101,14 @@
                  "document.getElementById('mainContainer').appendChild(result);"]]))
 
 
+(defn form-builder-page []
+  (master-page [:div
+                [:div {:id "mainContainer"}]
+                [:script
+                 "var specs = [{type: 'text', id: 'text1', class: 'class1', label: 'text one:'}];"
+                 "var result = src.base.control.formBuilder.initialize('formContainer', '', specs);"
+                 "document.getElementById('mainContainer').appendChild(result);"]]))
+
 ;; Editable Div Post
 
 (defn editable-div-page-result [text id]
