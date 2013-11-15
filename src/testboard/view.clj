@@ -97,7 +97,7 @@
   (master-page [:div
                 [:div {:id "mainContainer"}]
                 [:script
-                 "var result = src.base.control.wall.initialize('mainWall', '/wallpagepost/', '/wallpagedata/', '1','/wallpageedit/');"
+                 "var result = src.base.control.wall.initialize('mainWall', '/wallpagepost/', '/wallpagedata/', '/wallpagedelete/', '1','/wallpageedit/');"
                  "document.getElementById('mainContainer').appendChild(result);"]]))
 
 

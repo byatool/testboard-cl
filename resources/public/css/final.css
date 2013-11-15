@@ -219,6 +219,22 @@
         background-color: #cceef8;
         border-radius: 5px 5px 0 0;
         color: #007898; }
+        .itemsGrid .gridBuilderRowContainer .gridBuilderRowClass .wallInformation .deleteContainer {
+          border-color: #444444;
+          border-radius: 5px;
+          border-style: solid;
+          border-width: 0.1em;
+          background-color: #007898;
+          color: #cceef8;
+          font-size: 1em;
+          margin: 0 0.3em 0 0;
+          width: 2em; }
+          .itemsGrid .gridBuilderRowContainer .gridBuilderRowClass .wallInformation .deleteContainer:hover {
+            background-color: #dfdfdf !important;
+            color: #414141; }
+          .itemsGrid .gridBuilderRowContainer .gridBuilderRowClass .wallInformation .deleteContainer:hover {
+            background-color: #984545 !important;
+            color: #dfdfdf; }
       .itemsGrid .gridBuilderRowContainer .gridBuilderRowClass .submitButton {
         border-color: #444444;
         border-radius: 5px;

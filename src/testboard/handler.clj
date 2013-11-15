@@ -31,6 +31,8 @@
        (wall-page-post entryTextbox subjectId))
   (|-| wallpageedit  ?text ?itemId
        (wall-page-edit (Integer/parseInt itemId) text))
+  (|-| wallpagedelete  ?id
+       (wall-page-delete (Integer/parseInt id)))
   (route/resources "/")
   (route/not-found "Not Found"))
 

@@ -52,8 +52,6 @@
    (--| take per-page)))
 
 
-;; Actions
-
 (defn wall-page-post [text subject-id]
   (do
     (def current-id (+ current-id 1))
@@ -71,10 +69,16 @@
                       :TotalCountOfPages totalCountOfPages
                       :List (map create-ui-subject-item (retrieve-subject-items page 5 "date" true))})))
 
-
 (defn wall-page-edit [item-id text]
   (do
     (def subject-items
       (edit-list item-id text))
+    (generate-string
+     {:MessageItems [{:Message "Success" :MessageType "info"}]})))
+
+
+(defn wall-page-delete [id]
+  (do
+    (def subject-items (remove #(= (:Id %) id) subject-items))
     (generate-string
      {:MessageItems [{:Message "Success" :MessageType "info"}]})))

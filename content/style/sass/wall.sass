@@ -1,8 +1,8 @@
 
 @mixin itemGridPadding
   padding: .5em .5em .5em .5em
+  
     
-
 @mixin formButton
   @include defaultBorder
   background-color: $blueFive
@@ -56,10 +56,10 @@
       .editTextArea
         margin: .3em 0 .3em 0 !important
         width: 19.85em
-  
+          
       .textUpdateForm
         padding: 0 0 .5em 0
-  
+        
       #textUpdateForm_messageBox
         @include defaultBorder
         margin             : .4em 0 0 0
@@ -71,28 +71,35 @@
         .info
           background-color : $greenFive
           color            : $white
-            
+          
       .textContainer
         @include itemGridPadding
         background-color: $blueFive
         border-radius : 0 0 5px 5px
         color: $blueOne
         min-height: 7em
-
+        
       .wallInformation
         @include itemGridPadding
         background-color: $blueOne
         border-radius : 5px 5px 0 0
         color: $blueFive
       
+        .deleteContainer
+          @include formButton
+          &:hover
+            background-color : $errorRed !important
+            color: $almostWhite
+            
+        
       .submitButton
         @include formButton
       .updateFormCancel
         @include formButton
-  
+
   /* Pager */
   .gridBuilderButtonRowClass
-  
+    
     .pagerEnabledClass
       @include formButton
       padding: .2em .2em .2em .2em 
