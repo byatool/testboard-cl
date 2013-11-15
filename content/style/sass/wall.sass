@@ -1,95 +1,106 @@
 
 @mixin itemGridPadding
-  padding: .5em .5em .5em .5em
+  padding                    : .5em .5em .5em .5em
+
   
-    
 @mixin formButton
   @include defaultBorder
-  background-color: $blueFive
-  color: $blueOne
-  font-size: 1em
-  margin: 0 .3em 0 0
-  width: 2em
+  background-color           : $blueFive
+  color                      : $blueOne
+  font-size                  : 1em
+  margin                     : 0 .3em 0 0
+  width                      : 2em
   &:hover
-    background-color : $greyOne !important
-    color: $greyFive
-  
-      
+    background-color         : $greyOne !important
+    color                    : $greyFive
+
+    
 .entryForm
-  margin: 0 0 .5em 0
-  width: 16.2em
+  margin                     : 0 0 .5em 0
+  width                      : 16.2em
   .entryTextbox
-    height: 2em
-    width: 14.9em
+    height                   : 2em
+    width                    : 14.9em
   .submitButton
     @include formButton
-    margin: 0 0 0 1.5em
-    height: 2em 
-
-  #entryForm_messageBox
-    margin: .2em 0 0 0
+    margin                   : 0 0 0 1.5em
+    height                   : 2em 
       
+  #entryForm_messageBox
+    margin                   : .2em 0 0 0
+    
     .error
       @include itemGridPadding
       @include defaultBorder
-      background-color : $errorRed
-      color            : $white
+      background-color       : $errorRed
+      color                  : $white
     .info
       @include itemGridPadding
       @include defaultBorder
-      background-color : $greenFive
-      color            : $white
-      
+      background-color       : $greenFive
+      color                  : $white
+    
 .itemsGrid
   .gridBuilderRowContainer
     @include defaultBorder
     @include itemGridPadding
-    margin: 0 0 .5em 0
-    width: 18em
-      
+    margin                   : 0 0 .5em 0
+    width                    : 18em
+    
     .gridBuilderRowClass
       @include defaultBorder
       @include itemGridPadding
-      background-color: $greyThree
-      margin: 0 0 .2em 0
-
+      background-color       : $greyThree
+      margin                 : 0 0 .2em 0
+        
       .editTextArea
-        margin: .3em 0 .3em 0 !important
-        width: 19.85em
+        margin               : .3em 0 .3em 0 !important
+        width                : 19.85em
           
       .textUpdateForm
-        padding: 0 0 .5em 0
-        
+        padding              : 0 0 .5em 0
+  
       #textUpdateForm_messageBox
         @include defaultBorder
-        margin             : .4em 0 0 0
+        margin               : .4em 0 0 0
         div
-          padding: .3em .3em .3em .3em
+          padding            : .3em .3em .3em .3em
         .error
-          background-color : $errorRed
-          color            : $white
+          background-color   : $errorRed
+          color              : $white
         .info
-          background-color : $greenFive
-          color            : $white
-          
+          background-color   : $greenFive
+          color              : $white
+  
       .textContainer
         @include itemGridPadding
-        background-color: $blueFive
-        border-radius : 0 0 5px 5px
-        color: $blueOne
-        min-height: 7em
-        
+        background-color     : $blueFive
+        border-radius        : 0 0 5px 5px
+        color                : $blueOne
+        min-height           : 7em
+    
       .wallInformation
-        @include itemGridPadding
-        background-color: $blueOne
-        border-radius : 5px 5px 0 0
-        color: $blueFive
-      
+        background-color     : $blueOne
+        border-radius        : 5px 5px 0 0
+        color                : $blueFive
+    
+        .wallInformationText
+          @include itemGridPadding
+          float              : left
         .deleteContainer
-          @include formButton
+          border-color: $greyFour
+          border-style: solid
+          border-width: 0 0 0 .2em
+          background-color: $blueFive
+          border-radius        : 0 5px 0 0
+          color: $almostWhite
+          height: 2em
+          float              : right
+          margin: 0 0 0 0
+          padding: .3em .3em 0 .3em
           &:hover
             background-color : $errorRed !important
-            color: $almostWhite
+            color            : $almostWhite
             
         
       .submitButton
@@ -102,12 +113,12 @@
     
     .pagerEnabledClass
       @include formButton
-      padding: .2em .2em .2em .2em 
-      float: left
+      padding                : .2em .2em .2em .2em 
+      float                  : left
       
     .pagerDisabledClass
       @include formButton
-      padding: .2em .2em .2em .2em 
-      background-color: $greyFive
-      color: $greyOne
-      float: left
+      padding                : .2em .2em .2em .2em 
+      background-color       : $greyFive
+      color                  : $greyOne
+      float                  : left
