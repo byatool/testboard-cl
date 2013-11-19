@@ -105,7 +105,7 @@
   (master-page [:div
                 [:div {:id "mainContainer"}]
                 [:script
-                 "var specs = [{type: 'text', id: 'text1', class: 'class1', label: 'text one:'}];"
+                 "var specs = [{type: 'text', id: 'username', class: 'inputTextbox', label: 'username: '}];"
                  "var result = src.base.control.formBuilder.initialize('formContainer', '', specs);"
                  "document.getElementById('mainContainer').appendChild(result);"]]))
 

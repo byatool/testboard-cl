@@ -7,6 +7,17 @@
 .floatRight {
   float: right; }
 
+.formSubmit {
+  background-color: #cceef8;
+  border-color: #009ac4;
+  border-style: solid;
+  border-Width: 0.2em;
+  color: #009ac4;
+  font-size: 1em;
+  padding: 0 0.1em 0.1em 0.1em;
+  width: 2em;
+  height: 2em; }
+
 .theEditableDiv {
   background-color: #dfdfdf;
   border-radius: 5px;
