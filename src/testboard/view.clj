@@ -106,8 +106,11 @@
                 [:div {:id "mainContainer"}]
                 [:script
                  "var specs = [ "
-                 "  {type: 'text', id: 'username', class: 'inputTextbox', label: 'username: ', isDate: true, "
-                 "    validation: [['is not empty', 'Username is required']]},"
+                 "  {type: 'text', id: 'today', class: 'inputTextbox', label: 'today: ', isDate: true, "
+                 "    validation: ["
+                 "     ['is not empty', 'Today is required'],"
+                 "     ['is a valid date', 'Today is not a proper date' ]"
+                 "    ]},"
                  "  {type: 'text', id: 'firstName', class: 'inputTextbox', label: 'first name: ', "
                  "    validation: [['is not empty', 'First name is required']]}"
                  " ];"
