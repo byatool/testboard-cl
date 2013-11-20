@@ -105,8 +105,13 @@
   (master-page [:div
                 [:div {:id "mainContainer"}]
                 [:script
-                 "var specs = [{type: 'text', id: 'username', class: 'inputTextbox', label: 'username: '}];"
-                 "var result = src.base.control.formBuilder.initialize('formContainer', '', specs);"
+                 "var specs = [ "
+                 "  {type: 'text', id: 'username', class: 'inputTextbox', label: 'username: ', "
+                 "    validation: [['is not empty', 'Username is required']]},"
+                 "  {type: 'text', id: 'firstName', class: 'inputTextbox', label: 'first name: ', "
+                 "    validation: [['is not empty', 'First name is required']]}"
+                 " ];"
+                 "var result = src.base.control.formBuilder.initialize('formContainer', '/formbuilderpost/', specs);"
                  "document.getElementById('mainContainer').appendChild(result);"]]))
 
 ;; Editable Div Post

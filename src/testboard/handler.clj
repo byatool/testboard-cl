@@ -5,7 +5,8 @@
         [testboard.compojure-macro :only (|-|)]
         [clojure.string :only (blank?)]
         testboard.view
-        testboard.wall)
+        testboard.wall
+        testboard.form-builder)
   (:require [compojure.handler :as handler]
             [compojure.route :as route]
             [cheshire.core :refer :all]))
@@ -22,6 +23,8 @@
   (GET "/wallpage" [subjectId] (wall-page subjectId))
   (|-| editabledivresult ?text ?itemId
        (editable-div-page-result text itemId))
+  (|-| formbuilderpost ?username ?firstName
+       (form-builder-post username firstName))
   (|-| gridbuilderdata ?page ?sortBy ?descending
        (let [sort (if (blank? sortBy) "firstName" sortBy)
              is-descending (Boolean/valueOf descending)]
