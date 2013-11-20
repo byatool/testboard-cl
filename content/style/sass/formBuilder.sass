@@ -1,5 +1,180 @@
+
+$headFootHeight: 2em
+
+@mixin normalFont
+  font: 13px Arial
+
+@mixin dayAndDate
+  padding: 1px 3px
+  border: 0
+
+@mixin selected
+  background: $metroBlue
+  color: $white
+  
+  
 .submitButton
   @include defaultButton
   width: 2em
   height: 2em
+  
+  
+.popupDatePickerContainer
+  .datePickerPopup
+    background-color: #e0ecff
+    border: solid red 0px
+    color: black
+    font-size:  80%
+    margin: 0 0 0 .5em
+    position: absolute
+    visibility: hidden
+    outline: 0
+  
+  
+  .popupDatePickerButton
+    background-color: $blueFive
+    background-image: url('/image/calendar.jpg')
+    border-width: 0 !important
+    height: 2em
+    padding: 0 0 0 0
+    width: 2.8em
+      
+.goog-date-picker
+  @include normalFont
+  border-width: 0em
+  position: relative
+  /* The container border... This does not include the border of the pop up container */
+  float: left
+  padding: .2em .2em .2em .2em
+  /* This is for the overall container including the left bar with the week # background: #6493ff*/
+    
+    
+  cursor: default
+    
+  table
+    border-collapse: collapse
+      
+    tbody
+      tr
+        th
+          color: $darkGrey
+          background-color: $almostWhite
+    tfoot
+      margin-bottom: .2em
+      padding: .2em .2em .2em .2em
+        
+        
+  th
+    text-align: center
+
+  td 
+    text-align: center
+    vertical-align: middle
+    padding: 1px 3px
+    font-size: .9em
+
+    div 
+      float: left
+
+
+  /* This is for the button links 'Month', 'Year', 'Today', and 'None' */
+  button
+    padding: 0 0 0 0 !important
+    margin: 1px 0 0 0 !important
+    background-color: $almostWhite
+    color: $darkGrey !important
+    font-weight: bold !important
+
+  .goog-date-picker-btn
+    border: none
+
+
+/* This is for the month and year drop down list */
+.goog-date-picker-menu
+  @include defaultBorder
+  background: $metroBlue
+  color: $almostWhite
+  outline: none
+  padding: .2em .2em .2em .2em
+  position: absolute
+
+  z-index: 1
+
+  ul 
+    list-style: none
+    margin: 0px
+    padding: 0px
+
+    li 
+      cursor: default
+
+/* This is the drop down selected item*/    
+.goog-date-picker-menu-selected
+  @include selected
+
+/* This is the background for all the weekdays (M-F) in the current month */
+.goog-date-picker-date
+  background-color: $darkGrey
+  color: $white
+  font-weight: bold
+
+/* This is the sun mon... sat text container*/
+.goog-date-picker-wday
+  @include dayAndDate
+  background-color: $lightGrey !important
+  border-bottom-width: 1px
+  color: $darkGrey
+
+.goog-date-picker-week
+  @include dayAndDate
+  background-color: $almostWhite
+  border-right-width: 1px
+
+.goog-date-picker-month 
+  width: 12ex
+
+.goog-date-picker-year 
+  width: 6ex
+
+
+/* This is for the days before the current month, and after */
+.goog-date-picker-other-month
+  color: $midGrey !important
+
+
+/* This holds the month and year section of the header */    
+.goog-date-picker-head
+  background-color: $almostWhite
+  height: $headFootHeight
+
+  td 
+    text-align: center
+
+/* This holds the 'Today' and 'None' section of the footer */
+.goog-date-picker-foot
+  background-color: $almostWhite
+  height: $headFootHeight
+
+td.goog-date-picker-today-cont 
+  text-align: center
+
+td.goog-date-picker-none-cont 
+  text-align: center
+
+/* This is the left and right column that holds the weekend */
+.goog-date-picker-wkend-start,
+.goog-date-picker-wkend-end
+  background: $lightGrey
+
+td.goog-date-picker-selected
+  /* this is for the selected date even if that date is today */
+  @include selected
+
+.goog-date-picker-today
+  /* For non selected current day container */
+  background: #2d3b72
+  font-weight: bold !important
+  border-color: #246 #9bd #9bd #246
+  color: #fff
+    
     
