@@ -25,8 +25,8 @@
   (GET "/wallpage" [subjectId] (wall-page subjectId))
   (|-| editabledivresult ?text ?itemId
        (editable-div-page-result text itemId))
-  (|-| formbuilderpost ?username ?firstName
-       (form-builder-post username firstName))
+  (|-| formbuilderpost ?today ?firstName
+       (form-builder-post today firstName))
   (|-| gridbuilderdata ?page ?sortBy ?descending
        (let [sort (if (blank? sortBy) "firstName" sortBy)
              is-descending (Boolean/valueOf descending)]

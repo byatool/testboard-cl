@@ -13,7 +13,7 @@
   (let [script-text (append-return
                      [
                       "var specs = [ "
-                      " {type: 'text', id: 'today', class: 'inputTextbox', label: 'today: ', isDate: true, "
+                      " {type: 'date', id: 'today', class: 'inputTextbox', label: 'today: ', "
                       "  validation: ["
                       "   ['is not empty', 'Today is required'],"
                       "   ['is a valid date', 'Today is not a proper date' ]"
@@ -37,6 +37,6 @@
 
 
 
-(defn form-builder-post [username first-name]
+(defn form-builder-post [the-date first-name]
   (generate-string 
-   {:MessageItems [{:Message (join [username first-name]) :MessageType "info"}]}))
+   {:MessageItems [{:Message (join ["Success in saving " the-date " with " first-name]) :MessageType "info"}]}))

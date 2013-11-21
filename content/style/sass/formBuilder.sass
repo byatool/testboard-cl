@@ -3,21 +3,53 @@ $headFootHeight: 2em
 
 @mixin normalFont
   font: 13px Arial
-
+    
 @mixin dayAndDate
   padding: 1px 3px
   border: 0
-
+    
 @mixin selected
   background: $metroBlue
   color: $white
-  
-  
-.submitButton
-  @include defaultButton
-  width: 2em
-  height: 2em
-  
+    
+.formContainer
+  .form
+    @include defaultBorder
+    background-color: $greyOne
+    padding: .5em .5em .5em .5em
+    width: 20em
+    .formRow
+      .inputTextbox
+        float: left
+        height: 1.6em
+        
+      .formRowLabel
+        float: left
+        width: 7em
+    
+      #todaydate
+        float: right
+    
+    .submitButton
+      @include defaultButton
+      @include defaultBorder
+      width: 2em
+      height: 2em
+        
+    .error
+      @include defaultBorder
+      background-color   : $errorRed
+      color              : $white
+      font-size          : large
+      padding            : .4em .4em 0 .4em
+      
+    .info
+      @include defaultBorder
+      background-color   : #285f3a
+      color              : $white
+      font-size          : large
+      padding            : .4em .4em 0 .4em
+        
   
 .popupDatePickerContainer
   .datePickerPopup
@@ -29,8 +61,8 @@ $headFootHeight: 2em
     position: absolute
     visibility: hidden
     outline: 0
-  
-  
+
+
   .popupDatePickerButton
     background-color: $blueFive
     background-image: url('/image/calendar.jpg')
@@ -38,7 +70,7 @@ $headFootHeight: 2em
     height: 2em
     padding: 0 0 0 0
     width: 2.8em
-      
+    
 .goog-date-picker
   @include normalFont
   border-width: 0em
@@ -47,8 +79,8 @@ $headFootHeight: 2em
   float: left
   padding: .2em .2em .2em .2em
   /* This is for the overall container including the left bar with the week # background: #6493ff*/
-    
-    
+  
+  
   cursor: default
     
   table
