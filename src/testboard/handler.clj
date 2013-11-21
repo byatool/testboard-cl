@@ -4,9 +4,11 @@
         [hiccup.middleware :only (wrap-base-url)]
         [testboard.compojure-macro :only (|-|)]
         [clojure.string :only (blank?)]
-        testboard.view
+        testboard.editable-div
+        testboard.form-builder
+        testboard.grid-builder
         testboard.wall
-        testboard.form-builder)
+        testboard.view )
   (:require [compojure.handler :as handler]
             [compojure.route :as route]
             [cheshire.core :refer :all]))

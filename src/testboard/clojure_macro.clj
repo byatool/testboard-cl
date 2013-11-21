@@ -3,3 +3,4 @@
 
 (defmacro --| [& rest]
   `((partial ~@rest)))
+      

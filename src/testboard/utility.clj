@@ -2,12 +2,17 @@
   (:use
    [clojure.string :only (join capitalize blank?)]))
 
-(defn previous-page [page]
+(defn append-return [to-append]
+  (join
+   (map #(str % "\r ") to-append)))
+
+(defn resolve-previous-page [page]
   (if (> page 0)
     (- page 1 )
     page))
 
-(defn next-page [page total-count-of-pages]
+
+(defn resolve-next-page [page total-count-of-pages]
   (if (< page (- total-count-of-pages 1))
     (+ 1 page)
     page))

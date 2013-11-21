@@ -214,13 +214,13 @@ td.goog-date-picker-selected {
   border-width: 0.1em;
   background-color: #565656;
   margin: 2em 0 0 0;
-  width: 50em; }
+  width: 55em; }
   .gridBuilderContainer .short {
     width: 8em; }
   .gridBuilderContainer .medium {
     width: 12em; }
   .gridBuilderContainer .long {
-    width: 15em; }
+    width: 20em; }
   .gridBuilderContainer .gridBuilderHeaderRowClass {
     background-color: #9e9e9e;
     margin: 0 0 0.5em 0;
