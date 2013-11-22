@@ -2,9 +2,9 @@
   (:use
    [clojure.string :only (join capitalize blank?)]))
 
-(defn append-return [to-append]
+(defn append-return [& to-append]
   (join
-   (map #(str % "\r ") to-append)))
+   (map #(str % "\r ") (vec to-append))))
 
 (defn resolve-previous-page [page]
   (if (> page 0)

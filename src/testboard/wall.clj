@@ -1,12 +1,13 @@
 (ns testboard.wall
-  (:use [hiccup core page]
-        [cheshire.core :only (generate-string)]
-        [testboard.utility :only (resolve-previous-page resolve-next-page to-key)]
-        [testboard.clojure-macro :only (--|)]
-        [testboard.view :only (master-page)])
-   (:require
-   [clj-time.core :as time]
-   [clj-time.format :as time-format]))
+ (:use [hiccup core page]
+       [cheshire.core :only (generate-string)]
+       [testboard.utility :only (resolve-previous-page resolve-next-page to-key)]
+       [testboard.clojure-macro :only (--|)]
+       [testboard.view :only (master-page)]
+       [testboard.utility :only (append-return)])
+ (:require
+  [clj-time.core :as time]
+  [clj-time.format :as time-format]))
 
 
 (def subject-items [])
@@ -54,11 +55,92 @@
 
 ;; Get 
 (defn wall-page [id]
-  (master-page [:div
-                [:div {:id "mainContainer"}]
-                [:script
-                 "var result = src.base.control.wall.initialize('mainWall', '/wallpagepost/', '/wallpagedata/', '/wallpagedelete/', '1','/wallpageedit/');"
-                 "document.getElementById('mainContainer').appendChild(result);"]]))
+  
+  
+  (let [script-text (append-return
+                     "var result = src.base.control.wall.initialize("
+                     " 'mainWall', "
+                     " '/wallpagepost/', "
+                     " '/wallpagedata/',"
+                     " '/wallpagedelete/', "
+                     " '1',"
+                     " '/wallpageedit/'"
+                     ");"
+                     " "
+                     "document.getElementById('mainContainer').appendChild(result);")]
+    (master-page [:div
+                  [:div
+                   {:id "mainContainer"}]
+                  [:pre
+                   script-text]
+                  [:pre
+                   (append-return
+                    " "
+                    "ABOUT"
+                    " "
+                    "(containerId, postTo, retrieveItemsUrl, deleteUrl, subjectId, editableUrl)"
+                    " "
+                    " postTo:"
+                    "  The url the post information is sent to."
+                    "    entryTextbox  The wall entry textbox name"
+                    "    subjectId     The id of the wall it will be added to."
+                    "      This assumes there is table that links a subjectId to"
+                    "       many wall posts."
+                    " "
+                    " retrieveItemsUrl:"
+                    "  The url used to get a list of existing wall posts."
+                    "    subjectId   The id of the wall the posts are assigned to."
+                    "    page        The current page number.  This will be sent automatically"
+                    "                  with the paging control, and is 0 by default."
+                    " "
+                    "  required result:"
+                    "    list"
+                    "      PreviousPage"
+                    "        number"
+                    "        This is the page number of the new previous page"
+                    "      NextPage"
+                    "        number"
+                    "        This is the page number of the new next page"
+                    "      TotalCountOfPages"
+                    "        number"
+                    "        The count of how many pages (Items/Per Page) there are."
+                    "      List"
+                    "        {Id       :number"
+                    "         Subject  :string"
+                    "         Text     :string"
+                    "         Date     :string"
+                    "         Username :string}"
+                    " "
+                    " deleteUrl:"
+                    "  The url used to delete an item."
+                    "   id   The id of the post.  This is automatically set/sent by the wall."
+                    "  "
+                    "  required result:"
+                    "    {:MessageItems [{:Message 'Success' :MessageType 'info'}]}"
+                    "   or"
+                    "    {:MessageItems [{:Message 'Failed' :MessageType 'error'}]}"
+                    "  The message will be display automatically by the control.  The 'Success' and"
+                    "   'Failed' messages are specific text.  Anything can be sent back for the text"
+                    "   message."
+                    " "
+                    " subjectId:"
+                    "   The id of the wall the posts are assigned to.  Should be used to retrieve posts."
+                    " " 
+                    " editableUrl:"
+                    "   This is used when an item is edited by clicking on the text, and submitting the"
+                    "    new text."
+                    "   text        :  The new text."
+                    "   itemId      :  The id of the post to edit."
+                    " "
+                    "  required result:"
+                    "    {:MessageItems [{:Message 'Success' :MessageType 'info'}]}"
+                    "   or"
+                    "    {:MessageItems [{:Message 'Failed' :MessageType 'error'}]}"
+                    "  The message will be display automatically by the control."
+                    
+                    )]
+                  [:script
+                   script-text]])))
 
 
 ;; Post
