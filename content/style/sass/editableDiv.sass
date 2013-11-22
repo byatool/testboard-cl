@@ -1,22 +1,24 @@
 .theEditableDiv
   background-color       : $greyOne
-  border-radius      : 5px
-  height                 : 10em
+  border-radius          : 5px
+  min-height             : 10em
   padding                : 1em 1em 1em 1em
-  width: 11em
+  width                  : 11em
   .textContainer
     background-color     : $greyFour
-    border-radius      : 5px
+    border-radius        : 5px
     color                : $white
-    height               : 8em
+    min-height           : 8em
     padding              : 1em 1em 1em 1em
     width                : 11em
+    word-break           : break-all
+    word-break           : break-word
   .textUpdateForm
     .editTextArea
       border-radius      : 5px
-      height             : 10em
+      min-height         : 10em
       width              : 11em
-      
+  
     button
       @include defaultButton
       border-radius      : 5px
@@ -31,7 +33,7 @@
       @include defaultBorder
       margin             : 1em 0 0 0
       div
-        padding: .3em .3em .3em .3em
+        padding          : .3em .3em .3em .3em
       .error
         background-color : $errorRed
         color            : $white

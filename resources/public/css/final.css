@@ -201,19 +201,21 @@ td.goog-date-picker-selected {
 .theEditableDiv {
   background-color: #dfdfdf;
   border-radius: 5px;
-  height: 10em;
+  min-height: 10em;
   padding: 1em 1em 1em 1em;
   width: 11em; }
   .theEditableDiv .textContainer {
     background-color: #545454;
     border-radius: 5px;
     color: white;
-    height: 8em;
+    min-height: 8em;
     padding: 1em 1em 1em 1em;
-    width: 11em; }
+    width: 11em;
+    word-break: break-all;
+    word-break: break-word; }
   .theEditableDiv .textUpdateForm .editTextArea {
     border-radius: 5px;
-    height: 10em;
+    min-height: 10em;
     width: 11em; }
   .theEditableDiv .textUpdateForm button {
     background-color: #cceef8;
