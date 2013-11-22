@@ -21,7 +21,14 @@
                       "{type: 'text', id: 'firstName', class: 'inputTextbox', label: 'first name: ', "
                       "  validation: ["
                       "   ['is not empty', 'First name is required']"
-                      "  ]}"
+                      "  ]},"
+                      "{type: 'select', id: 'status', class: 'inputSelect', label: 'status: ', "
+                      "  validation: ["
+                      "   ['is not empty', 'Status is required'],"
+                      "  ],"
+                      "  parameters: {id: 1},"
+                      "  defaultValue: 'choose', "
+                      "  url: '/formbuilderselect/'} "
                       "];"
                       "var result = src.base.control.formBuilder.initialize("
                       " 'formContainer',"
@@ -37,6 +44,15 @@
 
 
 
-(defn form-builder-post [the-date first-name]
+(defn form-builder-post [the-date first-name status]
   (generate-string 
-   {:MessageItems [{:Message (join ["Success in saving " the-date " with " first-name]) :MessageType "info"}]}))
+   {:MessageItems
+    [{:Message
+      (join ["Success in saving " the-date " with " first-name " and status " status])
+      :MessageType "info"}]}))
+
+
+(defn form-builder-select [id]
+  (generate-string
+   [{:text "a" :value "A"}
+    {:text "b" :value "B"}]))
