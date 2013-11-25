@@ -5,7 +5,8 @@
                  [compojure "1.1.5"]
                  [lib-noir "0.7.0"]
                  [cheshire "5.2.0"]
-                 [faker "0.2.2"]]
+                 [faker "0.2.2"]
+                 [org.clojure/tools.trace "0.7.6"]]
   :plugins [[lein-ring "0.8.5"]]
   :ring {:handler testboard.handler/app}
   :profiles
