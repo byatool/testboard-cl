@@ -25,6 +25,8 @@
   (GET "/wallpage" [subjectId] (wall-page subjectId))
   (|-| editabledivresult ?text ?itemId
        (editable-div-page-result text itemId))
+  (|-| editable_div_start_text
+       (editable-div-start-text))
   (|-| formbuilderpost ?today ?firstName ?status
        (form-builder-post today firstName status))
   (|-| formbuilderselect  ?id

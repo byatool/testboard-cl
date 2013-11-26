@@ -1,46 +1,43 @@
 (ns testboard.editable-div
   (:use
-   [clojure.string :only (join replace)]
+   [clojure.string :only [join]]
    [testboard.view :only (master-page)]
-   [testboard.utility :only (append-return resolve-previous-page resolve-next-page to-key)]
-   [clojure.tools.trace])
+   [testboard.utility :only (append-return resolve-previous-page resolve-next-page to-key)])
   (:require
    [cheshire.core :refer :all]))
 
 
-(def current-text "this is the text")
+(def current-text "this is the text\nthere\n")
 
 (defn editable-div-page []
   (let [script-text
         (append-return
-         "var EditableDiv_ = src.base.control.editableDiv; "
-         "var holder = document.getElementById('mainContainer'); "
-         "var editableDiv = EditableDiv_.initialize( "
-         "  'theEditableDiv', "
-         "  'this is the text', "
-         "  '1', "
-         "  '/editabledivresult/'); "
-         "holder.appendChild(editableDiv);" )]
+         "src.base.helper.domHelper.submitToUrl('/editable_div_start_text/', {}, "
+         "  function(result) { "
+         "    var EditableDiv_ = src.base.control.editableDiv; "
+         "    var holder = document.getElementById('mainContainer'); "
+         "    var editableDiv = EditableDiv_.initialize( "
+         "      'theEditableDiv', "
+         "      result,"
+         "      '1', "
+         "      '/editabledivresult/'); "
+         "    holder.appendChild(editableDiv);"
+         "  });" )]
    (master-page [:div
                  [:div {:id "mainContainer"}]
                  [:script
-                  "var EditableDiv_ = src.base.control.editableDiv; "
-                  "var holder = document.getElementById('mainContainer'); "
-                  "var editableDiv = EditableDiv_.initialize( "
-                  "  'theEditableDiv', "
-                  (join ["'" current-text "', "])
-                  "  '1', "
-                  "  '/editabledivresult/'); "
-                  "holder.appendChild(editableDiv);"]])))
+                  script-text]])))
+
+
+(defn editable-div-start-text []
+  (generate-string current-text))
 
 (defn editable-div-page-result [text id]
-  
-  (let [new-text (clojure.string/replace text #"\n" "\r")]
-   (do
-     (trace new-text)
-     (def current-text new-text)
-     (generate-string {:MessageItems [{:Message (join [ text id]) :MessageType "error"}]}))))
-;; (do
-;;   
-;;   )
-(clojure.string/replace "the text\n" #"\n" "\r")
+  (let [new-text text]
+    (do
+      (def current-text new-text)
+      (generate-string {:MessageItems [{:Message (join [text id]) :MessageType "error"}]}))))
+
+
+
+
