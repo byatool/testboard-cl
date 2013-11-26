@@ -7,7 +7,8 @@
    [cheshire.core :refer :all]))
 
 
-(def current-text "this is the text\nthere\n")
+;;(def current-text "this is the text\nthere\n")
+(def current-text "")
 
 (defn editable-div-page []
   (let [script-text
@@ -37,7 +38,3 @@
     (do
       (def current-text new-text)
       (generate-string {:MessageItems [{:Message (join [text id]) :MessageType "error"}]}))))
-
-
-
-

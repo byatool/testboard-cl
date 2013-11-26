@@ -59,6 +59,7 @@
   
   (let [script-text (append-return
                      "var result = src.base.control.wall.initialize("
+                     " document, "
                      " 'mainWall', "
                      " '/wallpagepost/', "
                      " '/wallpagedata/',"
