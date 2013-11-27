@@ -324,6 +324,52 @@ td.goog-date-picker-selected {
       padding: 0.5em 0.5em 0.5em 0.5em;
       width: 2em; }
 
+.loginContainer .loginForm {
+  border-color: #444444;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 0.1em;
+  background-color: #dfdfdf;
+  padding: 0.5em 0.5em 0.5em 0.5em;
+  width: 17em; }
+  .loginContainer .loginForm .formRow .formRowLabel {
+    display: block;
+    float: left;
+    width: 5em; }
+  .loginContainer .loginForm .formRow .inputTextbox {
+    border-radius: 0.4em;
+    float: left; }
+  .loginContainer .loginForm .submitButton {
+    background-color: #cceef8;
+    border-color: #009ac4;
+    border-style: solid;
+    border-width: 0.2em;
+    color: #009ac4;
+    font-size: 1em;
+    padding: 0 0.1em 0.1em 0.1em;
+    height: 2em;
+    width: 2em; }
+  .loginContainer .loginForm .error {
+    border-color: #444444;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 0.1em;
+    background-color: #984545;
+    color: white;
+    font-size: large;
+    margin: 0.2em 0 0 0;
+    padding: 0.4em 0.4em 0 0.4em; }
+  .loginContainer .loginForm .info {
+    border-color: #444444;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 0.1em;
+    background-color: #285f3a;
+    color: white;
+    font-size: large;
+    margin: 0.2em 0 0 0;
+    padding: 0.4em 0.4em 0 0.4em; }
+
 .entryForm {
   margin: 0 0 0.5em 0;
   width: 16.2em; }

@@ -6,6 +6,7 @@
         [clojure.string :only (blank?)]
         testboard.editable-div
         testboard.form-builder
+        testboard.login
         testboard.grid-builder
         testboard.wall
         testboard.view )
@@ -21,6 +22,7 @@
   (GET "/editablediv" [] (editable-div-page))
   (GET "/formattext" [] (format-text-page))
   (GET "/formbuilderpage" [] (form-builder-page))
+  (GET "/loginpage" [] (login-page))
   (GET "/gridbuilderpage" [] (grid-builder-page))
   (GET "/wallpage" [subjectId] (wall-page subjectId))
   (|-| editabledivresult ?text ?itemId
@@ -31,6 +33,8 @@
        (form-builder-post today firstName status))
   (|-| formbuilderselect  ?id
        (form-builder-select id))
+  (|-| loginpagepost ?username ?password
+       (login-page-post username password))
   (|-| gridbuilderdata ?page ?sortBy ?descending
        (let [sort (if (blank? sortBy) "firstName" sortBy)
              is-descending (Boolean/valueOf descending)]

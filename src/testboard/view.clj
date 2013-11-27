@@ -29,9 +29,11 @@
                 [:br]
                 [:a {:href "/formbuilderpage"} "form buidler "]
                 [:br]
-                [:a {:href "/popupdatepicker"} "popup date picker "]
-                [:br]
                 [:a {:href "/gridbuilderpage"} "grid builder "]
+                [:br]
+                [:a {:href "/loginpage"} "login "]
+                [:br]
+                [:a {:href "/popupdatepicker"} "popup date picker "]
                 ]))
 
 

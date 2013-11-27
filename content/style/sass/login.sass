@@ -1,0 +1,38 @@
+.loginContainer
+  
+  .loginForm
+    @include defaultBorder
+    background-color   : $greyOne
+    padding            : .5em .5em .5em .5em
+    width              : 17em
+    
+    .formRow
+    
+      .formRowLabel
+        display        : block
+        float          : left
+        width          : 5em
+      .inputTextbox
+        border-radius  : .4em
+        float          : left
+      
+    .submitButton
+      @include defaultButton
+      height           : 2em
+      width            : 2em
+        
+    .error
+      @include defaultBorder
+      background-color : $errorRed
+      color            : $white
+      font-size        : large
+      margin           : .2em 0 0 0
+      padding          : .4em .4em 0 .4em
+    
+    .info
+      @include defaultBorder
+      background-color : #285f3a
+      color            : $white
+      font-size        : large
+      margin           : .2em 0 0 0
+      padding          : .4em .4em 0 .4em

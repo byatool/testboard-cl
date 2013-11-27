@@ -3,15 +3,15 @@ $headFootHeight: 2em
 
 @mixin normalFont
   font: 13px Arial
-    
+  
 @mixin dayAndDate
   padding: 1px 3px
   border: 0
-    
+  
 @mixin selected
   background: $metroBlue
   color: $white
-    
+  
 .formContainer
   .form
     @include defaultBorder
@@ -22,20 +22,20 @@ $headFootHeight: 2em
       .inputTextbox
         float: left
         height: 1.6em
-        
+      
       .formRowLabel
         float: left
         width: 7em
-    
+  
       #todaydate
         float: right
-    
+  
     .submitButton
       @include defaultButton
       @include defaultBorder
       width: 2em
       height: 2em
-        
+      
     .error
       @include defaultBorder
       background-color   : $errorRed
