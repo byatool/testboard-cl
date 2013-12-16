@@ -37,12 +37,14 @@
 
 ;; Get
 
+
 (defn grid-builder-page []
   (let [script-text (append-return
                      "var options = {};"
                      "options[src.base.control.gridBuilder.constant.ContainerClass] = 'gridBuilderContainer';"
                      "options[src.base.control.gridBuilder.constant.ContainerId] = 'gridBuilderContainer';"
-                     "options[src.base.control.gridBuilder.constant.Url] = '/gridbuilderdata/';"
+                     "options[src.base.control.gridBuilder.constant.Url] = '/gridbuilderdata';"
+                     "options[src.base.control.gridBuilder.constant.MainParameter] = 10;"
                      "options[src.base.control.gridBuilder.constant.Parameters] = { 'page': 0 };"
                      "options[src.base.control.gridBuilder.constant.Map] = ["
                      "  { 'headerText': 'Last Name', 'propertyName': 'LastName', 'class': 'short' },"

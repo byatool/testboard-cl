@@ -1,5 +1,6 @@
 (ns testboard.handler
   (:use compojure.core
+        clojure.tools.trace
         [hiccup core page]
         [hiccup.middleware :only (wrap-base-url)]
         [testboard.compojure-macro :only (|-|)]
@@ -24,6 +25,10 @@
   (GET "/formbuilderpage" [] (form-builder-page))
   (GET "/loginpage" [] (login-page))
   (GET "/gridbuilderpage" [] (grid-builder-page))
+  (GET "/gridbuilderdata/:someId" [someId page sortBy descending]
+       (let [sort (if (blank? sortBy) "firstName" sortBy)
+             is-descending (Boolean/valueOf descending)]
+         (grid-builder-data page sort is-descending)))
   (GET "/wallpage" [subjectId] (wall-page subjectId))
   (|-| editabledivresult ?text ?itemId
        (editable-div-page-result text itemId))
@@ -35,10 +40,6 @@
        (form-builder-select id))
   (|-| loginpagepost ?username ?password
        (login-page-post username password))
-  (|-| gridbuilderdata ?page ?sortBy ?descending
-       (let [sort (if (blank? sortBy) "firstName" sortBy)
-             is-descending (Boolean/valueOf descending)]
-         (grid-builder-data page sort is-descending)))
   (|-| wallpagedata ?subjectId ?page
        (wall-page-data (Integer/parseInt subjectId) (Integer/parseInt page)))
   (|-| wallpagepost  ?entryTextbox ?subjectId
